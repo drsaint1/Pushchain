@@ -28,8 +28,8 @@ export function usePushChainUniversal() {
 
         // Use Push Chain's universal.sendTransaction to execute cross-chain
         const txHash = await pushChainClient.universal.sendTransaction({
-          to: params.to,
-          data: params.data,
+          to: params.to as `0x${string}`,
+          data: params.data as `0x${string}`,
           value: params.value || 0n,
         });
 
@@ -88,7 +88,7 @@ export function usePushChainUniversal() {
     getUniversalAccount,
     getOriginAccount,
     signMessage,
-    isConnected: wallet?.isConnected || false,
+    isConnected: isInitialized && !!pushChainClient,
     isInitialized,
   };
 }

@@ -7,10 +7,10 @@ export default function ConnectButton() {
   const { open } = useWeb3Modal();
   const { address, isConnected } = useAccount();
   const { disconnect } = useDisconnect();
-  const { wallet: pushWallet } = usePushChainUniversal();
+  const { isConnected: isPushConnected } = usePushChainUniversal();
 
   // Show Push Chain Universal Button if Push Chain is available
-  if (pushWallet?.isConnected) {
+  if (isPushConnected) {
     return (
       <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
         <div style={{

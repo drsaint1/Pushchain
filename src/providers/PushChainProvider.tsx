@@ -14,11 +14,7 @@ export default function PushChainProvider({ children }: PushChainProviderProps) 
   return (
     <PushUniversalWalletProvider
       config={{
-        network: 'TESTNET_DONUT', // Push Chain Donut Testnet
-        appName: 'PushChain Racing Game',
-        appDescription: 'A thrilling 3D car racing game on Push Chain',
-        appUrl: typeof window !== 'undefined' ? window.location.origin : '',
-        appIcon: '/logo.png', // Update with your actual logo path
+        network: 'TESTNET_DONUT' as any, // Push Chain Donut Testnet
       }}
     >
       {children}
