@@ -502,10 +502,10 @@ const EnhancedCarRaceGame: React.FC<EnhancedCarRaceGameProps> = ({
   const checkDailyChallengeStatus = () => {
     const today = new Date().toDateString();
     const savedChallengeDate = localStorage.getItem(
-      "etherlinkRacing_dailyChallengeDate"
+      "pushchainRacing_dailyChallengeDate"
     );
     const savedChallengeCompleted = localStorage.getItem(
-      "etherlinkRacing_dailyChallengeCompleted"
+      "pushchainRacing_dailyChallengeCompleted"
     );
 
     // Generate today's challenge
@@ -518,9 +518,9 @@ const EnhancedCarRaceGame: React.FC<EnhancedCarRaceGameProps> = ({
       setDailyChallengeCompleted(false);
 
       if (savedChallengeDate !== today) {
-        localStorage.setItem("etherlinkRacing_dailyChallengeDate", today);
+        localStorage.setItem("pushchainRacing_dailyChallengeDate", today);
         localStorage.setItem(
-          "etherlinkRacing_dailyChallengeCompleted",
+          "pushchainRacing_dailyChallengeCompleted",
           "false"
         );
       }
@@ -528,8 +528,8 @@ const EnhancedCarRaceGame: React.FC<EnhancedCarRaceGameProps> = ({
   };
 
   useEffect(() => {
-    const savedHighScore = localStorage.getItem("etherlinkRacing_highScore");
-    const savedHistory = localStorage.getItem("etherlinkRacing_gameHistory");
+    const savedHighScore = localStorage.getItem("pushchainRacing_highScore");
+    const savedHistory = localStorage.getItem("pushchainRacing_gameHistory");
 
     if (savedHighScore) {
       setHighScore(parseInt(savedHighScore));
@@ -563,7 +563,7 @@ const EnhancedCarRaceGame: React.FC<EnhancedCarRaceGameProps> = ({
     if (newScore > highScore) {
       setHighScore(newScore);
       setIsNewHighScore(true);
-      localStorage.setItem("etherlinkRacing_highScore", newScore.toString());
+      localStorage.setItem("pushchainRacing_highScore", newScore.toString());
       return true;
     }
     return false;
@@ -578,7 +578,7 @@ const EnhancedCarRaceGame: React.FC<EnhancedCarRaceGameProps> = ({
     const updatedHistory = [newGame, ...gameHistory].slice(0, 50);
     setGameHistory(updatedHistory);
     localStorage.setItem(
-      "etherlinkRacing_gameHistory",
+      "pushchainRacing_gameHistory",
       JSON.stringify(updatedHistory)
     );
   };
@@ -738,8 +738,10 @@ const EnhancedCarRaceGame: React.FC<EnhancedCarRaceGameProps> = ({
           }, 2000);
         }, 3000);
       } else if (currentDailyChallenge && onNavigateToMenu) {
-        const challengeCompleted = checkChallengeCompletion(currentDailyChallenge);
-        
+        const challengeCompleted = checkChallengeCompletion(
+          currentDailyChallenge
+        );
+
         if (challengeCompleted && (isDailyChallengeRace || !tournamentId)) {
           setTimeout(() => {
             showPopup("🔒 Returning to main menu to prevent exploits...");
@@ -985,9 +987,9 @@ const EnhancedCarRaceGame: React.FC<EnhancedCarRaceGameProps> = ({
       }
 
       const isFirstTimeMint = playerCars.length === 0;
-              const successMessage = isFirstTimeMint
-              ? `🎉 Welcome to Pushchain Racing! Your ${carName} has been minted successfully. Redirecting to game...`
-              : `🎉 ${carName} successfully purchased! Your new NFT car is ready to race!`;
+      const successMessage = isFirstTimeMint
+        ? `🎉 Welcome to Pushchain Racing! Your ${carName} has been minted successfully. Redirecting to game...`
+        : `🎉 ${carName} successfully purchased! Your new NFT car is ready to race!`;
       setPurchaseConfirmation(successMessage);
 
       if (refetchCars) {
@@ -1592,9 +1594,9 @@ const EnhancedCarRaceGame: React.FC<EnhancedCarRaceGameProps> = ({
 
         if (challengeCompleted) {
           const today = new Date().toDateString();
-          localStorage.setItem("etherlinkRacing_dailyChallengeDate", today);
+          localStorage.setItem("pushchainRacing_dailyChallengeDate", today);
           localStorage.setItem(
-            "etherlinkRacing_dailyChallengeCompleted",
+            "pushchainRacing_dailyChallengeCompleted",
             "true"
           );
           setDailyChallengeCompleted(true);
@@ -2238,7 +2240,7 @@ const EnhancedCarRaceGame: React.FC<EnhancedCarRaceGameProps> = ({
               marginBottom: "16px",
             }}
           >
-            EtherLink Racing
+            Pushchain Racing
           </h1>
           <p style={{ fontSize: "20px", marginBottom: "32px" }}>
             Connect your wallet to start racing!
@@ -2296,7 +2298,7 @@ const EnhancedCarRaceGame: React.FC<EnhancedCarRaceGameProps> = ({
               fontWeight: "bold",
             }}
           >
-            🏁 Welcome to EtherLink Racing!
+            🏁 Welcome to Pushchain Racing!
           </h2>
           <p
             style={{
@@ -2473,7 +2475,7 @@ const EnhancedCarRaceGame: React.FC<EnhancedCarRaceGameProps> = ({
                   backgroundClip: "text",
                 }}
               >
-                EtherLink Racing
+                Pushchain Racing
               </h1>
 
               {selectedCar && (
