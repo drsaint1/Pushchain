@@ -605,7 +605,7 @@ export interface Tournament {
 
 export const useRacingContract = () => {
   const { address, isConnected } = useAccount();
-  const { getUniversalAccount, isConnected: isPushConnected, pushChainClient } = usePushChainUniversal();
+  const { getUniversalAccount, isConnected: isPushConnected } = usePushChainUniversal();
 
   // Use Push Chain universal account if connected, otherwise use wagmi address
   const universalAddress = getUniversalAccount();
